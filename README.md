@@ -1,2 +1,2 @@
 # flint
-Project and asset management for individual visual effects artists.
+Project and asset management for indi visual effects artists.
