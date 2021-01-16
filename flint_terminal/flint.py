@@ -3,6 +3,9 @@ import os
 # Utils function
 from util.print_color import print_c
 
+# flint commands
+from flint_create import create_project
+
 # terminal input globals
 TERMINAL_LOCATION = "$ >"
 
@@ -22,13 +25,21 @@ while True:
     if input_cmd == "help" or input_cmd == "-h":
         print_c(help_note)
 
+    # exit
+    elif input_cmd == "exit":
+        break
+
     # clear terminal history
     elif input_cmd == "clear":
         os.system('clear')
 
     # create a project
     elif input_cmd == "create-project":
-        pass
+        name = input("Project Name:")
+        description = input("Project Description:")
+        create_project(name, description)
+        print_c('INFO', f"Project '{name}' successfully created.")
+        print('')
 
     else:
         print_c(

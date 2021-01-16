@@ -3,28 +3,15 @@ import os
 from time import gmtime, strftime
 
 # database template
-from db import ROOT_DIR, PROJECTS_JSON, PROJECT_BASE_ID
-from db_json import read_json, write_json
+from .db import ROOT_DIR, PROJECTS_JSON, PROJECT_BASE_ID
+from .db_json import read_json, write_json
 
 
 def create_project_db(name, description):
 
     # check if the projects json file exists
     projects_json_path = os.path.join(ROOT_DIR, PROJECTS_JSON)
-    if os.path.isfile(projects_json_path):
-        # Read the json file
-        # data = read_json(projects_json_path)
-        # print(data)
-        pass
-    else:
-        pass
 
-    # check if the project already exists
-        # load all the project name form the json file
-        # check if there is a folder name by project name
-        # return, the project already exists
-
-    # else:
     # create-project
     # get data from the json
     data = read_json(projects_json_path)
@@ -43,7 +30,4 @@ def create_project_db(name, description):
     # dump data into json file
     write_json(projects_json_path, data)
 
-    print(data)
-
-
-create_project_db("project", 'This is a template project')
+    return new_project_data
