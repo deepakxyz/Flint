@@ -14,13 +14,21 @@ while True:
     terminal_input = ""
     input_cmd = input(f"{TERMINAL_LOCATION}")
 
+    help_note = '''
+        create-project - Create a project
+    '''
+
     # help
     if input_cmd == "help" or input_cmd == "-h":
-        print_c("INFO", "This is the test")
+        print_c(help_note)
 
     # clear terminal history
     elif input_cmd == "clear":
         os.system('clear')
+
+    # create a project
+    elif input_cmd == "create-project":
+        pass
 
     else:
         print_c(
