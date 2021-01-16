@@ -9,6 +9,6 @@ def read_json(json_file_path):
         return data_json
 
 
-def create_project_json(json_file_path):
-    # read and get json file data
-    data_json = read_json(json_file_path)
+def write_json(json_file_path, data):
+    with open(json_file_path, 'w') as f:
+        json.dump(data, f, indent=4)
