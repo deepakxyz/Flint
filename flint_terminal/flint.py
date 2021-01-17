@@ -3,11 +3,14 @@ from os.path import split
 from prettytable import PrettyTable
 
 # Utils function
-from util.print_color import print_c
+from utils import print_c
 
 # flint commands
 from flint_create import create_project
 from flint_get import get_projects, get_projects_json
+
+# todos
+from todo.todo import get_todos, add_todo
 
 # Global Database
 from db.db import ROOT_DIR
@@ -60,6 +63,12 @@ while True:
                 'ERROR', f"New project cannot be created when your are inside the project. Type 'root' to move to the root directory")
         else:
             name = input("Project Name:")
+            # check if the project name has spaces
+            split_name = name.split(' ')
+            if len(split_name) > 1:
+                print_c(
+                    'ERROR', "Cannot use spaces in your project name, insted use '_'")
+                name = input("Project Name:")
             description = input("Project Description:")
             create_project(name, description)
             print_c('INFO', f"Project '{name}' successfully created.")
@@ -91,12 +100,30 @@ while True:
     # Get all existing projects
     elif input_cmd == "get-projects" or input_cmd == "get-p":
         projects = get_projects()
-        table = PrettyTable(['Project', 'Description'])
+        table = PrettyTable(['Project', 'Description', 'Created on', 'ID'])
         path = os.path.join(ROOT_DIR, 'projects.json')
         data = get_projects_json(path)
         for name in data['projects']:
-            table.add_row([name['name'], name['description']])
+            table.add_row([name['name'], name['description'],
+                           name['created-on'], name['id']])
         print_c("INFO", f"{table}")
+
+    # TODOS
+    # get all todos
+    elif input_cmd == "todos":
+        id = 1
+        table = PrettyTable(['Id', 'Todos'])
+        todos = get_todos()
+        for todo in todos['todos']:
+            table.add_row([id, todo['todo']])
+            id += 1
+
+        print_c("INFO", f"{table}")
+
+    # add new todo
+    elif input_cmd == "todo.add":
+        new_todo = input('Add a Todo:')
+        add_todo(new_todo)
 
     else:
         print_c(

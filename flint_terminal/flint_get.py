@@ -1,9 +1,10 @@
 import os
 from db.db import ROOT_DIR
-from db.db_json import read_json
-
+from utils import read_json
 
 # get all the projects form the root directory
+
+
 def get_projects():
     projects = os.listdir(ROOT_DIR)
     return projects
