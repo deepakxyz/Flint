@@ -20,10 +20,10 @@ def print_c(type, msg):
         print(f"{ERROR} + {msg}")
 
     elif type == "INFO":
-        print(f"{INFO} {msg}")
+        print(f"{INFO}{msg}")
 
     elif type == "MSG":
-        print(f"{MSG} {msg}")
+        print(f"{MSG}{msg}")
 
     else:
         print(f"{msg}")
