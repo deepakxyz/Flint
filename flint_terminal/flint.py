@@ -34,6 +34,9 @@ while True:
         root                            Move to the root directory.
         open                            Open the file explorer of the current directory.
 
+        FLINT ASSET COMMAND
+        create-asset                    Create a new asset.
+
         TODO COMMANDS
         todos                           List all the TODOS.
         todo.add                        Add a new TODO.
@@ -125,6 +128,25 @@ while True:
             table.add_row([name['name'], name['description'],
                            name['created-on'], name['id']])
         print_c("INFO", f"{table}")
+
+    # Working with asset directory and asset
+    elif input_cmd == "create-asset":
+
+        asset_type = ['char', 'prop', 'envi', 'matte']
+        # check if the currect working directory is a project
+        if PROJECT_LOC in get_projects():
+            print_c("INFO", f"{asset_type}")
+            asset_type_input = input("Asset Type: ")
+            if asset_type_input in asset_type:
+                print_c("MSG", "    Valid asset type.")
+
+            else:
+                print_c(
+                    "ERROR", f"'{asset_type_input} is not a valid asset type.")
+
+        else:
+            print_c(
+                "ERROR", "You have to be at the project level to create an asset.")
 
     # TODOS
     # get all todos

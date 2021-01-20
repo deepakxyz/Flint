@@ -38,12 +38,10 @@ def create_assets_seq_dir(path):
             pass
 
 
+# Create asset cat directories.
 def create_assets_cat(path):
     # asset category
     asset_cat = ["char", "prop", "envi", "matte"]
     for cat in asset_cat:
         cat_path = os.path.join(path, cat)
         os.mkdir(cat_path)
-
-
-# create_project('Mayday', 'This is a template proejct')
