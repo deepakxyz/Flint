@@ -32,7 +32,7 @@ while True:
         cd or project "Project Name"    Move into the project.
         get-p or get-projects           Get all the projects in the root directory.
         root                            Move to the root directory.
-        open                            Open the file explorer of the current directory.
+        open                            Open the file explorer of the current working directory.
 
         FLINT ASSET COMMAND
         create-asset                    Create a new asset.
@@ -45,7 +45,7 @@ while True:
 
 
         TERMINAL COMMANDS
-        help                            See the help documentationa and existing command.
+        help                            See the help documentation and existing commands.
         exit                            Exit out of the Flint-terminal.
         clear                           Clear the ternimal history.
 
