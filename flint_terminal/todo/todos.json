@@ -1,16 +1,12 @@
 {
     "todos": [
         {
-            "todo": "make a pasta",
+            "todo": "This is a new first todo",
             "completed": true
         },
         {
-            "todo": "delete this todo",
+            "todo": "This is my second todo",
             "completed": false
-        },
-        {
-            "todo": "Check the mail in the second gmail.",
-            "completed": true
         }
     ]
 }

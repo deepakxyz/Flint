@@ -10,7 +10,7 @@ from flint_create import create_project
 from flint_get import get_projects, get_projects_json
 
 # todos
-from todo.todo import get_todos, add_todo
+from todo.todo import get_todos, add_todo, mark_complete, del_todo
 
 # Global Database
 from db.db import ROOT_DIR
@@ -27,14 +27,20 @@ while True:
     input_cmd = input(f"{PROJECT_LOC} {TERMINAL_LOCATION}")
 
     help_note = '''
-        create-project - Create a project.
-        project "Project Name" - Move into the project.
-        root - Move to the root directory.
+        create-project                  Create a project.
+        cd or project "Project Name"    Move into the project.
+        root                            Move to the root directory.
+        open                            Open the file explorer of the current directory.
+
+        TODO Commands
+        todos                           List all the TODOS
+        todo.add                        Add a new todo
+
 
         Terminal Command
-        help - See the help documentationa and existing command.
-        exit - Exit out of the Flint-terminal.
-        clear - Clear the ternimal history.
+        help                            See the help documentationa and existing command.
+        exit                            Exit out of the Flint-terminal.
+        clear                           Clear the ternimal history.
 
     '''
 
@@ -86,15 +92,23 @@ while True:
     elif input_cmd.startswith('open'):
         input_data = input_cmd.split(' ')
         if len(input_data) == 2:
+            #  open the project directory
             if input_data[1] in get_projects():
                 path = os.path.join(ROOT_DIR, input_data[1])
                 os.system(f'explorer.exe {path}')
+
             else:
                 print_c('ERROR', f"Project '{input_data[1]}' does not exists.")
         else:
             if PROJECT_LOC in get_projects():
                 path = os.path.join(ROOT_DIR, PROJECT_LOC)
                 os.system(f'explorer.exe {path}')
+
+            elif PROJECT_LOC == "":
+                os.system(f'explorer.exe {ROOT_DIR}')
+
+            else:
+                print_c("ERROR", "Project doesn't exists.")
 
     # Get commands
     # Get all existing projects
@@ -112,18 +126,45 @@ while True:
     # get all todos
     elif input_cmd == "todos":
         id = 1
-        table = PrettyTable(['Id', 'Todos'])
+        table = PrettyTable(['Id', 'Todos', 'Completed'])
         todos = get_todos()
         for todo in todos['todos']:
-            table.add_row([id, todo['todo']])
+            table.add_row([id, todo['todo'], todo['completed']])
             id += 1
 
         print_c("INFO", f"{table}")
 
-    # add new todo
+    # add a todo
     elif input_cmd == "todo.add":
-        new_todo = input('Add a Todo:')
-        add_todo(new_todo)
+        input_data = input("Add a Todo: ")
+        add_todo(input_data)
+        print_c("INFO", f"Todo added successfully.")
+
+    # delete the todo by index
+    elif input_cmd == "todo.del":
+        input_data = input("Index of the TODO: ")
+        # check if the todo index is out of range
+        if int(input_data) > len(get_todos()):
+            print_c("ERROR", "TODO index out of range.")
+
+        else:
+            del_todo(int(input_data))
+            print_c("INFO", "Todo deleted successfully.")
+
+    # mark completed
+    elif input_cmd == "todo.status":
+        input_index = input("Todo Index: ")
+        # check if the todo index is out of range
+        if int(input_index) > len(get_todos()):
+            print_c("ERROR", "TODO index out of range.")
+
+        else:
+            input_status = input("Todo Status: ")
+            if input_status == "True" or input_status == "False":
+                mark_complete(input_index, bool(input_status))
+                print_c("MSG", "Status marked.")
+            else:
+                print_c("ERROR", "COMMAND: True or False")
 
     else:
         print_c(

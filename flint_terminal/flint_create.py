@@ -1,8 +1,7 @@
 import os
 from db.create_db import create_project_db
 from db.db import ROOT_DIR
-from db.db_json import write_json
-from util.print_color import print_c
+from utils import print_c, write_json
 
 
 # create-project command
