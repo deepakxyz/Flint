@@ -59,7 +59,3 @@ def del_todo(todo_index):
 
     # dump json data
     write_json(TODO_PATH, todos)
-
-
-todos = len(get_todos())
-print(todos)

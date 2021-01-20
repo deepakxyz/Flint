@@ -27,17 +27,21 @@ while True:
     input_cmd = input(f"{PROJECT_LOC} {TERMINAL_LOCATION}")
 
     help_note = '''
+        FLINT COMMANDS
         create-project                  Create a project.
         cd or project "Project Name"    Move into the project.
+        get-p or get-projects           Get all the projects in the root directory.
         root                            Move to the root directory.
         open                            Open the file explorer of the current directory.
 
-        TODO Commands
-        todos                           List all the TODOS
-        todo.add                        Add a new todo
+        TODO COMMANDS
+        todos                           List all the TODOS.
+        todo.add                        Add a new TODO.
+        todo.del                        Delete a TODO by index.
+        todo.status                     Set TODO status as True or False.
 
 
-        Terminal Command
+        TERMINAL COMMANDS
         help                            See the help documentationa and existing command.
         exit                            Exit out of the Flint-terminal.
         clear                           Clear the ternimal history.
@@ -144,7 +148,8 @@ while True:
     elif input_cmd == "todo.del":
         input_data = input("Index of the TODO: ")
         # check if the todo index is out of range
-        if int(input_data) > len(get_todos()):
+        todos = get_todos()
+        if int(input_data) > len(todos['todos']):
             print_c("ERROR", "TODO index out of range.")
 
         else:
@@ -155,7 +160,8 @@ while True:
     elif input_cmd == "todo.status":
         input_index = input("Todo Index: ")
         # check if the todo index is out of range
-        if int(input_index) > len(get_todos()):
+        todos = get_todos()
+        if int(input_index) > len(todos['todos']):
             print_c("ERROR", "TODO index out of range.")
 
         else:

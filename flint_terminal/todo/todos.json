@@ -1,11 +1,7 @@
 {
     "todos": [
         {
-            "todo": "This is a new first todo",
-            "completed": true
-        },
-        {
-            "todo": "This is my second todo",
+            "todo": "Add create-asset func",
             "completed": false
         }
     ]
