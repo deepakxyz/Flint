@@ -15,6 +15,7 @@ def print_c(type, msg):
     ERROR = Fore.RED
     INFO = Fore.YELLOW
     MSG = Fore.CYAN
+    TERM = Back.BLUE
 
     if type == "ERROR":
         print(f"{ERROR} + {msg}")
@@ -24,6 +25,9 @@ def print_c(type, msg):
 
     elif type == "MSG":
         print(f"{MSG}{msg}")
+
+    elif type == "TERM":
+        return (f"{TERM}{msg}")
 
     else:
         print(f"{msg}")

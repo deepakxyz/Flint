@@ -1,3 +1,11 @@
-from util.rw_json import new
+# copy to clipboard
+from subprocess import check_call
 
-new()
+
+def copy2clip(text):
+    cmd = 'echo ' + text.strip() + '|clip'
+    return check_call(cmd, shell=True)
+
+
+text = "Error, This is your fucking error."
+copy2clip(text)

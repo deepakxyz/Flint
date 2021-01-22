@@ -3,6 +3,10 @@
         {
             "todo": "Add create-asset func",
             "completed": false
+        },
+        {
+            "todo": "Copy dir path to clip",
+            "completed": false
         }
     ]
 }

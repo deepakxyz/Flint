@@ -135,6 +135,7 @@ while True:
         asset_type = ['char', 'prop', 'envi', 'matte']
         # check if the currect working directory is a project
         if PROJECT_LOC in get_projects():
+            print_c("INFO", "Asset type must be form the following list.")
             print_c("INFO", f"{asset_type}")
             asset_type_input = input("Asset Type: ")
             if asset_type_input in asset_type:
