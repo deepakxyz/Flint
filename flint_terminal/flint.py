@@ -6,7 +6,7 @@ from prettytable import PrettyTable
 from utils import print_c
 
 # flint commands
-from flint_create import create_project
+from flint_create import create_project, create_asset
 from flint_get import get_projects, get_projects_json
 
 # todos
@@ -119,7 +119,7 @@ while True:
 
     # Get commands
     # Get all existing projects
-    elif input_cmd == "get-projects" or input_cmd == "get-p":
+    elif input_cmd == "list-p" or input_cmd == "get-p":
         projects = get_projects()
         table = PrettyTable(['Project', 'Description', 'Created on', 'ID'])
         path = os.path.join(ROOT_DIR, 'projects.json')
@@ -130,6 +130,8 @@ while True:
         print_c("INFO", f"{table}")
 
     # Working with asset directory and asset
+
+    # create asset
     elif input_cmd == "create-asset":
 
         asset_type = ['char', 'prop', 'envi', 'matte']
@@ -137,9 +139,20 @@ while True:
         if PROJECT_LOC in get_projects():
             print_c("INFO", "Asset type must be form the following list.")
             print_c("INFO", f"{asset_type}")
+
+            # asset type input from the list
             asset_type_input = input("Asset Type: ")
             if asset_type_input in asset_type:
                 print_c("MSG", "    Valid asset type.")
+
+                # asset name input
+                asset_name_input = input('Asset Name: ')
+
+                # create asset directory
+                asset = create_asset(
+                    PROJECT_LOC, asset_type_input, asset_name_input)
+                print_c(
+                    "MSG", f"Asset '{asset_name_input}' successfully created.")
 
             else:
                 print_c(

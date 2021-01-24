@@ -45,3 +45,11 @@ def create_assets_cat(path):
     for cat in asset_cat:
         cat_path = os.path.join(path, cat)
         os.mkdir(cat_path)
+
+
+# Flint create-asset
+def create_asset(project, cat, name):
+    project_path = os.path.join(ROOT_DIR, project)
+    cat_path = os.path.join("assets", cat)
+    asset_path = os.path.join(project_path, cat_path, name)
+    os.mkdir(asset_path)
