@@ -31,3 +31,8 @@ def create_project_db(name, description):
     write_json(projects_json_path, data)
 
     return new_project_data
+
+
+# Create asset
+def create_asset_db(name, description):
+    pass

@@ -16,15 +16,17 @@ from todo.todo import get_todos, add_todo, mark_complete, del_todo
 from db.db import ROOT_DIR
 
 # terminal input globals
-TERMINAL_LOCATION = "$ >"
+TERMINAL_LOCATION = ">"
 PROJECT_LOC = ""
+ASSET_TYPE = ""
+ASSET_NAME = ""
 # about the terminal
 print_c("MSG", 'Flint Terminal 1.0.0.')
 print_c("MSG", 'Type "help" to see all the commands')
 
 while True:
     terminal_input = ""
-    input_cmd = input(f"{PROJECT_LOC} {TERMINAL_LOCATION}")
+    input_cmd = input(f"{PROJECT_LOC}:{TERMINAL_LOCATION}")
 
     help_note = '''
         FLINT COMMANDS
@@ -87,13 +89,16 @@ while True:
             print_c('INFO', f"Project '{name}' successfully created.")
             print('')
 
-    # change directory into project
+    # change directory
     elif input_cmd.startswith("cd ") or input_cmd.startswith("project "):
         input_data = input_cmd.split(' ')
-        if input_data[1] in get_projects():
-            PROJECT_LOC = input_data[1]
+        if len(PROJECT_LOC) == 0:
+            if input_data[1] in get_projects():
+                PROJECT_LOC = input_data[1]
+            else:
+                print_c('ERROR', f"Project '{input_data[1]}' does not exists.")
         else:
-            print_c('ERROR', f"Project '{input_data[1]}' does not exists.")
+            print('Move into asset.')
 
     # open project explorer
     elif input_cmd.startswith('open'):
