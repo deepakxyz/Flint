@@ -1,7 +1,8 @@
 import os
-from db.create_db import create_project_db
+from db.create_db import create_project_db, create_asset_db
 from db.db import ROOT_DIR
-from utils import print_c, write_json
+from utils import print_c, write_json, read_json
+import json
 
 
 # create-project command
@@ -46,10 +47,30 @@ def create_assets_cat(path):
         cat_path = os.path.join(path, cat)
         os.mkdir(cat_path)
 
+    # assets.json template
+    assets_template = {
+        "assets": {
+            "char": [],
+            "envi": [],
+            "matte": [],
+            "prop": []
+        }
+    }
+
+    # create assets.json
+    with open(path + "\\assets.json", "w+") as wf:
+        json.dump(assets_template, wf, indent=4)
+
 
 # Flint create-asset
-def create_asset(project, cat, name):
+def create_asset(project, cat, name, assembly):
+    # asset directory path
     project_path = os.path.join(ROOT_DIR, project)
     cat_path = os.path.join("assets", cat)
     asset_path = os.path.join(project_path, cat_path, name)
+
+    # append data into assets.json
+    create_asset_db(project_path, cat, name, assembly)
+
+    # create asset directory
     os.mkdir(asset_path)

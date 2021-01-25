@@ -1,9 +1,8 @@
-import json
 import os
 from time import gmtime, strftime
 
 # database template
-from .db import ROOT_DIR, PROJECTS_JSON, PROJECT_BASE_ID
+from .db import ROOT_DIR, PROJECTS_JSON, PROJECT_BASE_ID, ASSETS_JSON, ASSET_BASE_ID
 from .db_json import read_json, write_json
 
 
@@ -34,5 +33,31 @@ def create_project_db(name, description):
 
 
 # Create asset
-def create_asset_db(name, description):
-    pass
+def create_asset_db(projectLoc, assetType, assetName, assembly=True):
+
+    # assets.json file path
+    assets_json_path = os.path.join(
+        projectLoc, "assets", "assets.json")
+
+    # get data from the json
+    data = read_json(assets_json_path)
+
+    # created date
+    created_on = strftime("%d %b %Y", gmtime())
+
+    # create asset ID
+    asset_id = ASSET_BASE_ID + len(data['assets'][assetType])
+
+    # new assets json template
+    new_asset_template = {
+        "name": assetName,
+        "created-on": created_on,
+        "id": asset_id,
+        "assembly": assembly,
+        "status": False
+    }
+
+    data['assets'][assetType].append(new_asset_template)
+
+    # dump the json data
+    write_json(assets_json_path, data)

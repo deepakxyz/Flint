@@ -1,5 +1,6 @@
 # copy to clipboard
 from subprocess import check_call
+import json
 
 
 def copy2clip(text):
@@ -7,5 +8,19 @@ def copy2clip(text):
     return check_call(cmd, shell=True)
 
 
-text = "Error, This is your fucking error."
-copy2clip(text)
+assets = {
+    "assets":
+        {
+            "char": [],
+            "envi": [],
+            "matte": [],
+            "prop": []
+        }
+
+}
+
+with open("temp.json", 'r') as rf:
+    data = rf.read()
+    data_json = json.loads(data)
+    print(data_json)
+    print((data_json['assets']['char']))

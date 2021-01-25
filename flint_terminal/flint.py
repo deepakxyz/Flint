@@ -153,11 +153,18 @@ while True:
                 # asset name input
                 asset_name_input = input('Asset Name: ')
 
-                # create asset directory
-                asset = create_asset(
-                    PROJECT_LOC, asset_type_input, asset_name_input)
-                print_c(
-                    "MSG", f"Asset '{asset_name_input}' successfully created.")
+                # get assembly value
+                print_c("MSG", "type 'true' or 'false' is the assets has assembly.")
+                assemble_value = input('Assemble Directory: ')
+
+                if assemble_value == "true" or assemble_value == "false":
+                    # create asset directory
+                    asset = create_asset(
+                        PROJECT_LOC, asset_type_input, asset_name_input, assemble_value)
+                    print_c(
+                        "MSG", f"Asset '{asset_name_input}' successfully created.")
+                else:
+                    print_c("ERROR", f'{assemble_value} is invalid.')
 
             else:
                 print_c(
