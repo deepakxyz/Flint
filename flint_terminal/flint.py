@@ -7,7 +7,7 @@ from utils import print_c
 
 # flint commands
 from flint_create import create_project, create_asset
-from flint_get import get_projects, get_projects_json
+from flint_get import get_projects, get_projects_json, get_assets
 
 # todos
 from todo.todo import get_todos, add_todo, mark_complete, del_todo
@@ -37,7 +37,8 @@ while True:
         open                            Open the file explorer of the current working directory.
 
         FLINT ASSET COMMAND
-        create-asset                    Create a new asset.
+        create-asset                    Create a new asset.(Must at the project level)
+        get-asset                       Get all the assets from the current project.
 
         TODO COMMANDS
         todos                           List all the TODOS.
@@ -136,6 +137,7 @@ while True:
 
     # Working with asset directory and asset
 
+    # ASSETS
     # create asset
     elif input_cmd == "create-asset":
 
@@ -174,8 +176,23 @@ while True:
             print_c(
                 "ERROR", "You have to be at the project level to create an asset.")
 
-    # TODOS
-    # get all todos
+    elif input_cmd == "get-assets":
+        assets = get_assets(PROJECT_LOC)
+        # table = PrettyTable(['Asset', 'Type', "Created on", "ID", "Assembly"])
+        asset_type = ['char', 'envi', 'matte', 'prop']
+        table = PrettyTable(['Asset', 'Type',
+                             'Created on', 'ID', "Assembly", "Status"])
+        for type in asset_type:
+            asset_data = assets['assets'][type]  # returns a list
+            for data in asset_data:
+                # print(data['name'])
+                table.add_row([data['name'], type, data['created-on'],
+                               data['id'], data['assembly'], data['status']])
+            # print(asset_data)
+        print_c("INFO", f"{table}")
+
+        # TODOS
+        # get all todos
     elif input_cmd == "todos":
         id = 1
         table = PrettyTable(['Id', 'Todos', 'Completed'])

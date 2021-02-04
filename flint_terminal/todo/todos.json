@@ -1,12 +1,12 @@
 {
     "todos": [
         {
-            "todo": "Add create-asset func",
+            "todo": "Create folder structure for the create-asset command.",
             "completed": false
         },
         {
-            "todo": "Copy dir path to clip",
-            "completed": false
+            "todo": "get-assets from the project",
+            "completed": true
         }
     ]
 }

@@ -14,3 +14,10 @@ def get_projects():
 def get_projects_json(json_file_path):
     data = read_json(json_file_path)
     return data
+
+
+def get_assets(project):
+    assets_path = os.path.join(ROOT_DIR, project)
+    assets_json_file = os.path.join(assets_path, "assets", "assets.json")
+    data = read_json(assets_json_file)
+    return data
