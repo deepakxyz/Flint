@@ -74,3 +74,12 @@ def create_asset(project, cat, name, assembly):
 
     # create asset directory
     os.mkdir(asset_path)
+
+    # check if it has assembly
+    if assembly:
+        # create asset subdirectory
+        pass
+
+    # if not assembly
+    else:
+        pass

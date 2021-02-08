@@ -18,15 +18,20 @@ from db.db import ROOT_DIR
 # terminal input globals
 TERMINAL_LOCATION = ">"
 PROJECT_LOC = ""
+
+# INTO ASSET
 ASSET_TYPE = ""
 ASSET_NAME = ""
+
 # about the terminal
 print_c("MSG", 'Flint Terminal 1.0.0.')
 print_c("MSG", 'Type "help" to see all the commands')
 
 while True:
+    # if len(ASSET_NAME) > 0:
+    # ASSET_NAME =
     terminal_input = ""
-    input_cmd = input(f"{PROJECT_LOC}:{TERMINAL_LOCATION}")
+    input_cmd = input(f"{PROJECT_LOC}{ASSET_NAME}:{TERMINAL_LOCATION}")
 
     help_note = '''
         FLINT COMMANDS
@@ -71,6 +76,13 @@ while True:
     # go to the root directory
     elif input_cmd == "root":
         PROJECT_LOC = ''
+        ASSET_NAME = ''
+        ASSET_TYPE = ''
+
+    # go back one level
+    elif input_cmd == "cd .":
+        ASSET_NAME = ''
+        ASSET_TYPE = ''
 
     # create a project
     elif input_cmd == "create-project":
@@ -176,20 +188,55 @@ while True:
             print_c(
                 "ERROR", "You have to be at the project level to create an asset.")
 
+    # List asset command
     elif input_cmd == "list-assets":
-        assets = get_assets(PROJECT_LOC)
-        # table = PrettyTable(['Asset', 'Type', "Created on", "ID", "Assembly"])
-        asset_type = ['char', 'envi', 'matte', 'prop']
-        table = PrettyTable(['Asset', 'Type',
-                             'Created on', 'ID', "Assembly", "Status"])
-        for type in asset_type:
-            asset_data = assets['assets'][type]  # returns a list
-            for data in asset_data:
-                # print(data['name'])
-                table.add_row([data['name'], type, data['created-on'],
-                               data['id'], data['assembly'], data['status']])
-            # print(asset_data)
-        print_c("INFO", f"{table}")
+        if not PROJECT_LOC == "":
+            assets = get_assets(PROJECT_LOC)
+            # table = PrettyTable(['Asset', 'Type', "Created on", "ID", "Assembly"])
+            asset_type = ['char', 'envi', 'matte', 'prop']
+            table = PrettyTable(['Asset', 'Type',
+                                 'Created on', 'ID', "Assembly", "Status"])
+            for type in asset_type:
+                asset_data = assets['assets'][type]  # returns a list
+                for data in asset_data:
+                    # print(data['name'])
+                    table.add_row([data['name'], type, data['created-on'],
+                                   data['id'], data['assembly'], data['status']])
+                # print(asset_data)
+            print_c("INFO", f"{table}")
+
+        else:
+            print_c(
+                'ERROR', f"Must be at the project level. You are currently at the 'root' level.")
+
+    # Move into asset
+    elif input_cmd.startswith("into"):
+        input_data = input_cmd.split(' ')
+        if len(input_data) > 1:
+            if not PROJECT_LOC == "":
+                # get all the assets
+                assets = get_assets(PROJECT_LOC)
+                asset_type = ['char', 'envi', 'matte', 'prop']
+                all_assets = []
+                for type in asset_type:
+                    asset_data = assets['assets'][type]
+                    for data in asset_data:
+                        all_assets.append(data['name'])
+                        all_assets.append(type)
+                        # print(data)
+
+                # check if the asset exists
+                if input_data[1] in all_assets:
+                    asset_name_index = all_assets.index(input_data[1])
+                    ASSET_TYPE = all_assets[asset_name_index + 1]
+                    ASSET_NAME = "/" + ASSET_TYPE + "/" + input_data[1]
+
+                # print(ASSET_NAME, ASSET_TYPE)
+            else:
+                print_c(
+                    "ERROR", "Must be at the project level. You are currently at the 'root' level.")
+        else:
+            print_c("ERROR", "You must specify the asset-name.")
 
         # TODOS
         # get all todos
