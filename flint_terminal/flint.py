@@ -37,13 +37,13 @@ while True:
         FLINT COMMANDS
         create-project                  Create a project.
         cd or project "Project Name"    Move into the project.
-        get-p or get-projects           Get all the projects in the root directory.
+        list-p or list-projects         Get all the projects in the root directory.
         root                            Move to the root directory.
         open                            Open the file explorer of the current working directory.
 
         FLINT ASSET COMMAND
         create-asset                    Create a new asset.(Must at the project level)
-        list-asset                       List all the assets from the current project.
+        list-assets or list-a           List all the assets from the current project.
 
         TODO COMMANDS
         todos                           List all the TODOS.
@@ -137,7 +137,7 @@ while True:
 
     # Get commands
     # Get all existing projects
-    elif input_cmd == "list-p" or input_cmd == "get-p":
+    elif input_cmd == "list-p" or input_cmd == "list-projects":
         projects = get_projects()
         table = PrettyTable(['Project', 'Description', 'Created on', 'ID'])
         path = os.path.join(ROOT_DIR, 'projects.json')
@@ -189,7 +189,7 @@ while True:
                 "ERROR", "You have to be at the project level to create an asset.")
 
     # List asset command
-    elif input_cmd == "list-assets":
+    elif input_cmd == "list-assets" or input_cmd == "list-a":
         if not PROJECT_LOC == "":
             assets = get_assets(PROJECT_LOC)
             # table = PrettyTable(['Asset', 'Type', "Created on", "ID", "Assembly"])
