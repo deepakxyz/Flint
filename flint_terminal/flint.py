@@ -232,6 +232,10 @@ while True:
                     ASSET_NAME = "/" + ASSET_TYPE + "/" + input_data[1]
 
                 # print(ASSET_NAME, ASSET_TYPE)
+                    print_c(
+                        "INFO", f"Moved into the asset '{input_data[1]}' of type '{ASSET_TYPE}'")
+                else:
+                    print_c("ERROR", f"Asset '{input_data[1]}' not found.")
             else:
                 print_c(
                     "ERROR", "Must be at the project level. You are currently at the 'root' level.")
