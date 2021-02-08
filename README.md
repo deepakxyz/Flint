@@ -1,6 +1,6 @@
 # Flint
 
-Project and asset management for indie visual effects artists.
+Project and asset management for visual effects artists.
 
 ## Flint Terminal
 

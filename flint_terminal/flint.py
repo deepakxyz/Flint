@@ -38,7 +38,7 @@ while True:
 
         FLINT ASSET COMMAND
         create-asset                    Create a new asset.(Must at the project level)
-        get-asset                       Get all the assets from the current project.
+        list-asset                       List all the assets from the current project.
 
         TODO COMMANDS
         todos                           List all the TODOS.
@@ -176,7 +176,7 @@ while True:
             print_c(
                 "ERROR", "You have to be at the project level to create an asset.")
 
-    elif input_cmd == "get-assets":
+    elif input_cmd == "list-assets":
         assets = get_assets(PROJECT_LOC)
         # table = PrettyTable(['Asset', 'Type', "Created on", "ID", "Assembly"])
         asset_type = ['char', 'envi', 'matte', 'prop']
