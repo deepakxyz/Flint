@@ -2,11 +2,19 @@
     "todos": [
         {
             "todo": "Create folder structure for the create-asset command.",
-            "completed": false
+            "completed": true
         },
         {
             "todo": "get-assets from the project",
             "completed": true
+        },
+        {
+            "todo": "Add status func in the asset level , return: asset current status",
+            "completed": false
+        },
+        {
+            "todo": "Add info, return: asset info",
+            "completed": false
         }
     ]
 }

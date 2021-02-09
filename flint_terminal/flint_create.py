@@ -75,11 +75,38 @@ def create_asset(project, cat, name, assembly):
     # create asset directory
     os.mkdir(asset_path)
 
+    asset_details = {
+        "name": name,
+        "assembly": assembly
+    }
     # check if it has assembly
-    if assembly:
-        # create asset subdirectory
-        pass
 
+    if assembly == "true" or assembly == "True":
+        # create asset subdirectory
+        directories = ['assembly']
+
+        # create asset json file
+        with open(asset_path + "\\" + name + ".json", "w+") as wf:
+            json.dump(asset_details, wf, indent=4)
+        for dir in directories:
+            os.mkdir(asset_path + '/' + dir)
     # if not assembly
     else:
-        pass
+        directories = ['cfx', 'fx', 'lookDev', 'model',
+                       'renders', 'rig', 'rnd', 'temp']
+
+        # cfx : character fx (ziva)
+        # fx : fx - not sure
+        # lookDev : lookDev file (katana or maya file)
+        # model : model (zfile)
+        # renders : lookDev and test renders
+        # rig : rig of the model
+        # rnd : research and development
+        # temp : temp caches and test export file( will be cleaned)
+
+        with open(asset_path + "\\" + name + ".json", "w+") as wf:
+            json.dump(asset_details, wf, indent=4)
+
+        # create cat directories
+        for dir in directories:
+            os.mkdir(asset_path + '\\' + dir)

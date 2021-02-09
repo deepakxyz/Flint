@@ -22,6 +22,7 @@ PROJECT_LOC = ""
 # INTO ASSET
 ASSET_TYPE = ""
 ASSET_NAME = ""
+ASSET_NAME_1 = ''
 
 # about the terminal
 print_c("MSG", 'Flint Terminal 1.0.0.')
@@ -111,7 +112,7 @@ while True:
             else:
                 print_c('ERROR', f"Project '{input_data[1]}' does not exists.")
         else:
-            print('Move into asset.')
+            print_c("ERROR", f"Move to the 'root' level to change project.")
 
     # open project explorer
     elif input_cmd.startswith('open'):
@@ -126,7 +127,14 @@ while True:
                 print_c('ERROR', f"Project '{input_data[1]}' does not exists.")
         else:
             if PROJECT_LOC in get_projects():
-                path = os.path.join(ROOT_DIR, PROJECT_LOC)
+                cat = ""
+                if len(ASSET_NAME) > 0:
+                    cat = "assets"
+                path = os.path.join(ROOT_DIR, PROJECT_LOC,
+                                    cat, ASSET_TYPE, ASSET_NAME_1)
+                print(ASSET_NAME_1)
+                print(path)
+                # print(ASSET_NAME)
                 os.system(f'explorer.exe {path}')
 
             elif PROJECT_LOC == "":
@@ -210,7 +218,7 @@ while True:
                 'ERROR', f"Must be at the project level. You are currently at the 'root' level.")
 
     # Move into asset
-    elif input_cmd.startswith("into"):
+    elif input_cmd.startswith("into") or input_cmd.startswith(">"):
         input_data = input_cmd.split(' ')
         if len(input_data) > 1:
             if not PROJECT_LOC == "":
@@ -230,6 +238,7 @@ while True:
                     asset_name_index = all_assets.index(input_data[1])
                     ASSET_TYPE = all_assets[asset_name_index + 1]
                     ASSET_NAME = "/" + ASSET_TYPE + "/" + input_data[1]
+                    ASSET_NAME_1 = input_data[1]
 
                 # print(ASSET_NAME, ASSET_TYPE)
                     print_c(
@@ -282,6 +291,7 @@ while True:
 
         else:
             input_status = input("Todo Status: ")
+            print_c("INFO", "COMMAND: True or False")
             if input_status == "True" or input_status == "False":
                 mark_complete(input_index, bool(input_status))
                 print_c("MSG", "Status marked.")
