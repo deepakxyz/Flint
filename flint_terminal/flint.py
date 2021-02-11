@@ -38,6 +38,7 @@ while True:
         FLINT COMMANDS
         create-project                  Create a project.
         cd or project "Project Name"    Move into the project.
+        cd .. or <                      Move one level back.
         list-p or list-projects         Get all the projects in the root directory.
         root                            Move to the root directory.
         open                            Open the file explorer of the current working directory.
@@ -81,7 +82,7 @@ while True:
         ASSET_TYPE = ''
 
     # go back one level
-    elif input_cmd == "cd .":
+    elif input_cmd == "cd ." or input_cmd == "<":
         ASSET_NAME = ''
         ASSET_TYPE = ''
 
@@ -163,7 +164,7 @@ while True:
 
         asset_type = ['char', 'prop', 'envi', 'matte']
         # check if the currect working directory is a project
-        if PROJECT_LOC in get_projects():
+        if PROJECT_LOC in get_projects() and ASSET_NAME == "":
             print_c("INFO", "Asset type must be form the following list.")
             print_c("INFO", f"{asset_type}")
 
@@ -180,9 +181,12 @@ while True:
                 assemble_value = input('Assemble Directory: ')
 
                 if assemble_value == "true" or assemble_value == "false":
+
+                    # descrption
+                    description = input('Asset Description:')
                     # create asset directory
                     asset = create_asset(
-                        PROJECT_LOC, asset_type_input, asset_name_input, assemble_value)
+                        PROJECT_LOC, asset_type_input, asset_name_input, assemble_value, description)
                     print_c(
                         "MSG", f"Asset '{asset_name_input}' successfully created.")
                 else:
@@ -203,13 +207,13 @@ while True:
             # table = PrettyTable(['Asset', 'Type', "Created on", "ID", "Assembly"])
             asset_type = ['char', 'envi', 'matte', 'prop']
             table = PrettyTable(['Asset', 'Type',
-                                 'Created on', 'ID', "Assembly", "Status"])
+                                 'Created on', 'ID', "Assembly", "Status", "Description"])
             for type in asset_type:
                 asset_data = assets['assets'][type]  # returns a list
                 for data in asset_data:
                     # print(data['name'])
                     table.add_row([data['name'], type, data['created-on'],
-                                   data['id'], data['assembly'], data['status']])
+                                   data['id'], data['assembly'], data['status'], data['description']])
                 # print(asset_data)
             print_c("INFO", f"{table}")
 

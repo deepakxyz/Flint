@@ -63,18 +63,19 @@ def create_assets_cat(path):
 
 
 # Flint create-asset
-def create_asset(project, cat, name, assembly):
+def create_asset(project, cat, name, assembly, description):
     # asset directory path
     project_path = os.path.join(ROOT_DIR, project)
     cat_path = os.path.join("assets", cat)
     asset_path = os.path.join(project_path, cat_path, name)
 
     # append data into assets.json
-    create_asset_db(project_path, cat, name, assembly)
+    create_asset_db(project_path, cat, name, assembly, description)
 
     # create asset directory
     os.mkdir(asset_path)
 
+    # individual asset details that goes inside the asset folder
     asset_details = {
         "name": name,
         "assembly": assembly

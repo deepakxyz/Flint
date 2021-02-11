@@ -33,7 +33,7 @@ def create_project_db(name, description):
 
 
 # Create asset
-def create_asset_db(projectLoc, assetType, assetName, assembly=True):
+def create_asset_db(projectLoc, assetType, assetName, assembly=True, description="None"):
 
     # assets.json file path
     assets_json_path = os.path.join(
@@ -54,7 +54,8 @@ def create_asset_db(projectLoc, assetType, assetName, assembly=True):
         "created-on": created_on,
         "id": asset_id,
         "assembly": assembly,
-        "status": False
+        "status": False,
+        "description": description
     }
 
     data['assets'][assetType].append(new_asset_template)
