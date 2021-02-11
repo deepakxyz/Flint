@@ -25,8 +25,10 @@ ASSET_NAME = ""
 ASSET_NAME_1 = ''
 
 # about the terminal
-print_c("MSG", 'Flint Terminal 1.0.1.')
-print_c("MSG", 'Type "help" to see all the commands')
+about_msg = '''Flint Terminal 1.0.1.
+Type "help" to see all the commands.'''
+
+print_c("MSG", f'{about_msg}')
 
 while True:
     # if len(ASSET_NAME) > 0:
@@ -72,8 +74,7 @@ while True:
     # clear terminal history
     elif input_cmd == "clear":
         os.system('clear')
-        print_c("MSG", 'Flint Terminal 1.0.0.')
-        print_c("MSG", 'Type "help" to see all the commands')
+        print_c("MSG", f'{about_msg}')
 
     # go to the root directory
     elif input_cmd == "root":
@@ -227,7 +228,9 @@ while True:
         # check if the assembly is "true".
         data = get_asset_details(PROJECT_LOC, ASSET_TYPE, ASSET_NAME_1)
         if data['assembly'] == "True" or data['assembly'] == "true":
-            print('creating new asset')
+            name = input("Sub-asset Name:")
+            create_assembly_subasset_dir(
+                PROJECT_LOC, ASSET_TYPE, ASSET_NAME_1, name)
         else:
             print_c(
                 "ERROR", "The asset has no assembly, cannot create new sub-asset.")

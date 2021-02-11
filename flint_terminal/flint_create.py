@@ -95,11 +95,23 @@ def create_asset(project, cat, name, assembly, description):
     # create asset directory
     os.mkdir(asset_path)
 
-    # individual asset details that goes inside the asset folder
-    asset_details = {
-        "name": name,
-        "assembly": assembly
-    }
+    if assembly == True or assembly == "true":
+
+        # individual asset details that goes inside the asset folder
+        asset_details = {
+            "name": name,
+            "assembly": assembly,
+            "sub-asset": []
+        }
+
+    else:
+
+        # individual asset details that goes inside the asset folder
+        asset_details = {
+            "name": name,
+            "assembly": assembly
+        }
+
     # check if it has assembly
 
     if assembly == "true" or assembly == "True":
@@ -118,14 +130,19 @@ def create_asset(project, cat, name, assembly, description):
             json.dump(asset_details, wf, indent=4)
 
         create_directory(asset_path)
+
+
 # create assembly new asset directory
-
-
 def create_assembly_subasset_dir(project, cat, asset_name, sub_asset_name):
     project_path = os.path.join(ROOT_DIR, project)
     cat_path = os.path.join("assets", cat)
-    asset_path = os.path.join(project_path, cat_path, asset_name)
+    asset_type_path = os.path.join(project_path, cat_path)
+    asset_path = os.path.join(asset_type_path, asset_name)
+    # print(asset_path)
 
     # create sub asset directory
-    sub_asset_path = os.path.json(asset_path, sub_asset_name)
+    sub_asset_path = os.path.join(asset_path, sub_asset_name)
+    # print(sub_asset_path)
     os.mkdir(sub_asset_path)
+
+    create_directory(sub_asset_path)
