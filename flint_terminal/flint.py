@@ -25,7 +25,7 @@ ASSET_NAME = ""
 ASSET_NAME_1 = ''
 
 # about the terminal
-print_c("MSG", 'Flint Terminal 1.0.0.')
+print_c("MSG", 'Flint Terminal 1.0.1.')
 print_c("MSG", 'Type "help" to see all the commands')
 
 while True:
