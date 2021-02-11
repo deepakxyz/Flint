@@ -6,8 +6,8 @@ from prettytable import PrettyTable
 from utils import print_c
 
 # flint commands
-from flint_create import create_project, create_asset
-from flint_get import get_projects, get_projects_json, get_assets
+from flint_create import create_project, create_asset, create_assembly_subasset_dir
+from flint_get import get_projects, get_projects_json, get_assets, get_asset_details
 
 # todos
 from todo.todo import get_todos, add_todo, mark_complete, del_todo
@@ -202,6 +202,7 @@ while True:
 
     # List asset command
     elif input_cmd == "list-assets" or input_cmd == "list-a":
+
         if not PROJECT_LOC == "":
             assets = get_assets(PROJECT_LOC)
             # table = PrettyTable(['Asset', 'Type', "Created on", "ID", "Assembly"])
@@ -221,7 +222,19 @@ while True:
             print_c(
                 'ERROR', f"Must be at the project level. You are currently at the 'root' level.")
 
-    # Move into asset
+    # create sub asset for assembly.
+    elif input_cmd == "new":
+        # check if the assembly is "true".
+        data = get_asset_details(PROJECT_LOC, ASSET_TYPE, ASSET_NAME_1)
+        if data['assembly'] == "True" or data['assembly'] == "true":
+            print('creating new asset')
+        else:
+            print_c(
+                "ERROR", "The asset has no assembly, cannot create new sub-asset.")
+        # if true: create folder structure.
+        # create_assembly_subasset_dir()
+
+        # Move into asset
     elif input_cmd.startswith("into") or input_cmd.startswith(">"):
         input_data = input_cmd.split(' ')
         if len(input_data) > 1:
@@ -304,5 +317,5 @@ while True:
 
     else:
         print_c(
-            "ERROR", f"The command '{input_cmd}' does not exist yet. Use 'help' to find all the commands")
+            "ERROR", f"The command '{input_cmd}' does not exist yet. Use 'help' to find all the commands.")
         print('')

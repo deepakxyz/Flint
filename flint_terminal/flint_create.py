@@ -61,8 +61,28 @@ def create_assets_cat(path):
     with open(path + "\\assets.json", "w+") as wf:
         json.dump(assets_template, wf, indent=4)
 
+# create directories
+
+
+def create_directory(path):
+    directories = ['cfx', 'fx', 'lookDev', 'model',
+                   'renders', 'rig', 'rnd', 'temp']
+    # cfx : character fx (ziva)
+    # fx : fx - not sure
+    # lookDev : lookDev file (katana or maya file)
+    # model : model (zfile)
+    # renders : lookDev and test renders
+    # rig : rig of the model
+    # rnd : research and development
+    # temp : temp caches and test export file( will be cleaned)
+
+    # create cat directories
+    for dir in directories:
+        os.mkdir(path + '\\' + dir)
 
 # Flint create-asset
+
+
 def create_asset(project, cat, name, assembly, description):
     # asset directory path
     project_path = os.path.join(ROOT_DIR, project)
@@ -93,21 +113,19 @@ def create_asset(project, cat, name, assembly, description):
             os.mkdir(asset_path + '/' + dir)
     # if not assembly
     else:
-        directories = ['cfx', 'fx', 'lookDev', 'model',
-                       'renders', 'rig', 'rnd', 'temp']
-
-        # cfx : character fx (ziva)
-        # fx : fx - not sure
-        # lookDev : lookDev file (katana or maya file)
-        # model : model (zfile)
-        # renders : lookDev and test renders
-        # rig : rig of the model
-        # rnd : research and development
-        # temp : temp caches and test export file( will be cleaned)
 
         with open(asset_path + "\\" + name + ".json", "w+") as wf:
             json.dump(asset_details, wf, indent=4)
 
-        # create cat directories
-        for dir in directories:
-            os.mkdir(asset_path + '\\' + dir)
+        create_directory(asset_path)
+# create assembly new asset directory
+
+
+def create_assembly_subasset_dir(project, cat, asset_name, sub_asset_name):
+    project_path = os.path.join(ROOT_DIR, project)
+    cat_path = os.path.join("assets", cat)
+    asset_path = os.path.join(project_path, cat_path, asset_name)
+
+    # create sub asset directory
+    sub_asset_path = os.path.json(asset_path, sub_asset_name)
+    os.mkdir(sub_asset_path)
