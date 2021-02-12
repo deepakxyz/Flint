@@ -318,6 +318,13 @@ while True:
             else:
                 print_c("ERROR", "COMMAND: True or False")
 
+    # RnD directory
+    elif input_cmd == "rnd":
+
+        while True:
+            input_cmd = input("rnd:>")
+            print('RND')
+
     else:
         print_c(
             "ERROR", f"The command '{input_cmd}' does not exist yet. Use 'help' to find all the commands.")
