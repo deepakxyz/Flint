@@ -76,6 +76,12 @@ while True:
         os.system('clear')
         print_c("MSG", f'{about_msg}')
 
+    elif input_cmd == "init":
+        info = f'''
+        ROOT_DIR = {ROOT_DIR}
+        '''
+        print_c("INFO", f"{info}")
+
     # go to the root directory
     elif input_cmd == "root":
         PROJECT_LOC = ''
@@ -134,8 +140,8 @@ while True:
                     cat = "assets"
                 path = os.path.join(ROOT_DIR, PROJECT_LOC,
                                     cat, ASSET_TYPE, ASSET_NAME_1)
-                print(ASSET_NAME_1)
-                print(path)
+                # print(ASSET_NAME_1)
+                # print(path)
                 # print(ASSET_NAME)
                 os.system(f'explorer.exe {path}')
 
