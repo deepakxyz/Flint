@@ -6,7 +6,7 @@ from .db import ROOT_DIR, PROJECTS_JSON, PROJECT_BASE_ID, ASSETS_JSON, ASSET_BAS
 from .db_json import read_json, write_json
 
 
-def create_project_db(name, description):
+def create_project_db(name, description, id):
 
     # check if the projects json file exists
     projects_json_path = os.path.join(ROOT_DIR, PROJECTS_JSON)
@@ -21,9 +21,10 @@ def create_project_db(name, description):
 
     # create project Id
     project_id = PROJECT_BASE_ID + len(data['projects'])
+
     # new projct detail and append into a dic
     new_project_data = {"name": name, "description": description,
-                        "created-on": created_on, "id": project_id}
+                        "created-on": created_on, "id": id}
     data['projects'].append(new_project_data)
 
     # dump data into json file

@@ -2,7 +2,7 @@
 Flint terminal is a terminal verion of Flint, which uses `json` files as a database.
 
 ## Todo's
-- `set shortcut for a directory`
+![[TOdo's]]
 
 ## Commands
 - [[#create-project]] 
@@ -13,9 +13,9 @@ Flint terminal is a terminal verion of Flint, which uses `json` files as a datab
 - [[#open]]
 - [[#Asset Level Commands]]
 	- [[#create-asset]]
-- [[#Set Command]]
-	- [[#]]
-
+- [[#Quick Command]]
+	- [[#k1 k2 k3 k4]]
+	- [[#l1 l2 l3 l4]]
 
 
 ### create-project
@@ -68,5 +68,13 @@ Creates an asset under the given project directory.
 `Asset Name`: Name of the asset
 `Asset Discription`: About the asset.
 
-## Set Command
-### set-lvl or set-level
+## Quick Command
+###  k1, k2, k3, k4
+*Type: #qucik*
+*Level: #any *
+Save the location of the corresponding key.
+
+### l1, l2, l3, l4
+*Type: #quick*
+*Level: #any*
+Set the location of the corresponding key.

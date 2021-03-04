@@ -10,7 +10,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Flint-terminal.md",
+            "file": "naming convention.md",
             "mode": "source"
           }
         }
@@ -70,7 +70,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Flint-terminal.md",
+                "file": "naming convention.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -101,15 +101,15 @@
     "collapsed": true
   },
   "lastOpenFiles": [
+    "naming convention.md",
+    "TOdo's.md",
     "Flint-terminal.md",
+    "Flint.md",
     "Untitled.md",
     "RnD_directory_structure.md",
     "regex/Grep.md",
     "regex/Untitled.md",
     "javascript/react/getting-started/3.Github Cards App.md",
-    "javascript/react/getting-started/Untitled.md",
-    "javascript/react/BookList.md",
-    "javascript/react/getting-started/1.One-way Data Flow.md",
-    "javascript/react/getting-started/One-way Data Flow.md"
+    "javascript/react/getting-started/Untitled.md"
   ]
 }

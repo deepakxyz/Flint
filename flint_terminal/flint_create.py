@@ -6,7 +6,7 @@ import json
 
 
 # create-project command
-def create_project(name, description):
+def create_project(name, description, id):
     path = os.path.join(ROOT_DIR, name)
     # check if the project already exists
     if os.path.isdir(path):
@@ -15,7 +15,7 @@ def create_project(name, description):
     # else create the project
     else:
         # dump data into main projects json file
-        data = create_project_db(name, description)
+        data = create_project_db(name, description, id)
         # create directory
         os.mkdir(path)
         # create a seprate json file inside the project directory
@@ -101,15 +101,18 @@ def create_asset(project, cat, name, assembly, description):
         asset_details = {
             "name": name,
             "assembly": assembly,
+            "type": cat,
             "sub-asset": []
         }
 
     else:
 
-        # individual asset details that goes inside the asset folder
+        # individual asset details that goes inside the asset folder json file
+        # Json File data
         asset_details = {
             "name": name,
-            "assembly": assembly
+            "assembly": assembly,
+            "type": cat
         }
 
     # check if it has assembly

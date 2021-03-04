@@ -108,7 +108,8 @@ while True:
                     'ERROR', "Cannot use spaces in your project name, insted use '_'")
                 name = input("Project Name:")
             description = input("Project Description:")
-            create_project(name, description)
+            project_id = input("Project Id:")
+            create_project(name, description,project_id)
             print_c('INFO', f"Project '{name}' successfully created.")
             print('')
 
@@ -284,18 +285,18 @@ while True:
     elif input_cmd.startswith("k"):
         if input_cmd == "k1":
             set_level_db("l1",PROJECT_LOC, ASSET_TYPE, ASSET_NAME)
-            print_c("MSG","Shortcut set at the key 1.")
+            print_c("MSG","Shortcut set to the key 1.")
         elif input_cmd == "k2":
             set_level_db("l2",PROJECT_LOC, ASSET_TYPE, ASSET_NAME)
-            print_c("MSG","Shortcut set at the key 2.")
+            print_c("MSG","Shortcut set to the key 2.")
 
         elif input_cmd == "k3":
             set_level_db("l3",PROJECT_LOC, ASSET_TYPE, ASSET_NAME)
-            print_c("MSG","Shortcut set at the key 3.")
+            print_c("MSG","Shortcut set to the key 3.")
 
         elif input_cmd == "k4":
             set_level_db("l4",PROJECT_LOC, ASSET_TYPE, ASSET_NAME)
-            print_c("MSG","Shortcut set at the key 4.")
+            print_c("MSG","Shortcut set to the key 4.")
 
         else:
             print_c("MSG","You cannot set shortcut more than key 4.")
