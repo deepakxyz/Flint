@@ -1,0 +1,142 @@
+
+body {
+  font-size:14px;
+  color:#919191;
+}
+
+.theme-dark {
+    --background-primary:rgb(24, 24, 24);
+    --text-normal: rgb(153, 153, 153);
+    --text-muted: rgb(107, 96, 96);
+    --text-on-accent:#665baa;
+}
+
+
+/* Line Height */
+.cm-s-obsidian pre.HyperMD-header {
+    line-height: 1!important;
+}
+
+.theme-dark {
+    --text-selection: rgba(112, 93, 207, 0.5);
+}
+
+::selection {
+    background-color: #665baa!important;
+    color: white!important;
+}
+
+.view-header-title {
+    color: #665baa;
+    text-align: center;
+}
+
+.workspace-leaf.mod-active .view-header {
+    text-align: center;
+}
+
+/* Headers */
+span.cm-formatting.cm-formatting-header.cm-formatting-header-1.cm-header.cm-header-1 {
+
+    color: #665baa;
+}
+
+span.cm-formatting.cm-formatting-header.cm-formatting-header-2.cm-header.cm-header-2 {
+    color: #665baa;
+}
+
+span.cm-formatting.cm-formatting-header.cm-formatting-header-3.cm-header.cm-header-3 {
+    color: #665baa;
+}
+
+span.cm-formatting.cm-formatting-header.cm-formatting-header-4.cm-header.cm-header-4 {
+    color: #665baa;
+}
+
+span.cm-formatting.cm-formatting-header.cm-formatting-header-5.cm-header.cm-header-5 {
+    color: #665baa;
+}
+
+span.cm-formatting.cm-formatting-header.cm-formatting-header-6.cm-header.cm-header-6 {
+    color: #665baa;
+}
+
+
+/* Header folder icon */
+.CodeMirror-foldgutter-open, .CodeMirror-foldgutter-folded {
+    color: #665baa;
+}
+
+.CodeMirror-foldgutter-open, .CodeMirror-foldgutter-folded {
+    color: #705dcf;
+}
+
+/* Cursor */
+.cm-fat-cursor .CodeMirror-cursor {
+    background: #665baa;
+}
+
+.cm-animate-fat-cursor {
+    background-color: #665baa;
+}
+
+/* Highlights and Bold */
+strong {
+    font-size: larger;
+    color: var(--text-normal);
+}
+
+mark {
+    background-color: darkgoldenrod;
+}
+
+
+/* File explorer navigation selection */
+.nav-file.is-active > .nav-file-title, .nav-file.is-active > .nav-folder-title, .nav-file.is-active > .nav-folder-collapse-indicator, .nav-folder.is-active > .nav-file-title, .nav-folder.is-active > .nav-folder-title, .nav-folder.is-active > .nav-folder-collapse-indicator {
+    background-color: #4f496e;
+    color: rgb(153, 153, 153);
+}
+
+body:not(.is-grabbing) .nav-file-title:hover, body:not(.is-grabbing) .nav-folder-title:hover {
+    background-color: #544e7c;
+    color: rgb(146, 146, 146);
+}
+
+.nav-file-title-content, .nav-folder-title-content {
+    color:unset;
+}
+
+.nav-folder.mod-root > .nav-file-title:hover, .nav-folder.mod-root > .nav-folder-title:hover {
+    color: var(--text-normal);
+}
+
+body:not(.is-grabbing) .nav-file-title:hover .nav-folder-collapse-indicator, body:not(.is-grabbing) .nav-folder-title:hover .nav-folder-collapse-indicator {
+    background-color: #433e64;
+    color: rgb(146, 146, 146);
+}
+
+.nav-file-title, .nav-folder-title, .nav-folder-collapse-indicator {
+    color: var(--text-normal);
+}
+
+
+/* Graph View */
+
+.graph-view.color-fill {
+    color: #504780;
+}
+.graph-view.color-circle {
+    color: #3e3471;
+}
+.graph-view.color-line {
+    color:  #3e3471;
+}
+.graph-view.color-text {
+    color: var(--text-normal);
+}
+.graph-view.color-fill-highlight {
+    color: #3e3471;
+}
+.graph-view.color-line-highlight {
+    color: #554b86;
+}

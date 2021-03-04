@@ -66,7 +66,7 @@ def create_assets_cat(path):
 
 def create_directory(path):
     directories = ['cfx', 'fx', 'lookDev', 'model',
-                   'renders', 'rig', 'rnd', 'temp']
+                   'renders', 'rig', 'rnd', 'temp', "zfile"]
     # cfx : character fx (ziva)
     # fx : fx - not sure
     # lookDev : lookDev file (katana or maya file)
