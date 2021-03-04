@@ -8,7 +8,14 @@ Flint terminal is a terminal verion of Flint, which uses `json` files as a datab
 - [[#create-project]] 
 - [[#cd or project]]
 - [[#cd .. or <]]
-- [[#list-p]]
+- [[#list-p or list-projects]]
+- [[#root]]
+- [[#open]]
+- [[#Asset Level Commands]]
+	- [[#create-asset]]
+- [[#Set Command]]
+	- [[#]]
+
 
 
 ### create-project
@@ -33,8 +40,33 @@ Flint terminal is a terminal verion of Flint, which uses `json` files as a datab
  *Return: None*
  Move one level back.
  
- ### list-p
+ ### list-p or list-projects
 *Type: #list* 
 *Level: #root #any*
 *Return: List of all the projects*
 Prints out a table containing the list of alll the project including project id and date it is created on.
+
+### root
+*Type: #move*
+*Level: #any*
+*Return: Moves to the root level.*
+
+### open
+*Type: #open*
+*Level: #any*
+*Return: Opens the file explorer of the current level.*
+
+## Asset Level Commands
+### create-asset
+*Type: #create*
+*Level: #project *
+*Return: Creates an asset under the project in the correspoding directory*
+Creates an asset under the given project directory.
+
+`create-asset` : Main command
+`Asset Type` from ['char', 'prop', 'envi', 'matte']
+`Asset Name`: Name of the asset
+`Asset Discription`: About the asset.
+
+## Set Command
+### set-lvl or set-level

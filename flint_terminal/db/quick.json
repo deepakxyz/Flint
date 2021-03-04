@@ -1,0 +1,24 @@
+{
+    "level": {
+        "l1": {
+            "project_name": "little_lines",
+            "asset_type": "",
+            "asset_name": ""
+        },
+        "l2": {
+            "project_name": "little_lines",
+            "asset_type": "char",
+            "asset_name": "/char/lou"
+        },
+        "l3": {
+            "project_name": "",
+            "asset_type": "",
+            "asset_name": ""
+        },
+        "l4": {
+            "project_name": "",
+            "asset_type": "",
+            "asset_name": ""
+        }
+    }
+}

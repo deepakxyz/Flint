@@ -8,6 +8,7 @@ from utils import print_c
 # flint commands
 from flint_create import create_project, create_asset, create_assembly_subasset_dir
 from flint_get import get_projects, get_projects_json, get_assets, get_asset_details
+from flint_set import set_level_db, get_level_db
 
 # todos
 from todo.todo import get_todos, add_todo, mark_complete, del_todo
@@ -276,6 +277,73 @@ while True:
                     "ERROR", "Must be at the project level. You are currently at the 'root' level.")
         else:
             print_c("ERROR", "You must specify the asset-name.")
+
+    
+    # Set Commands
+    # Save quick level.
+    elif input_cmd.startswith("k"):
+        if input_cmd == "k1":
+            set_level_db("l1",PROJECT_LOC, ASSET_TYPE, ASSET_NAME)
+            print_c("MSG","Shortcut set at the key 1.")
+        elif input_cmd == "k2":
+            set_level_db("l2",PROJECT_LOC, ASSET_TYPE, ASSET_NAME)
+            print_c("MSG","Shortcut set at the key 2.")
+
+        elif input_cmd == "k3":
+            set_level_db("l3",PROJECT_LOC, ASSET_TYPE, ASSET_NAME)
+            print_c("MSG","Shortcut set at the key 3.")
+
+        elif input_cmd == "k4":
+            set_level_db("l4",PROJECT_LOC, ASSET_TYPE, ASSET_NAME)
+            print_c("MSG","Shortcut set at the key 4.")
+
+        else:
+            print_c("MSG","You cannot set shortcut more than key 4.")
+
+    # Set quick level.
+    elif input_cmd.startswith("l"):
+        if input_cmd == "l1":
+            level_data = get_level_db('l1')
+            PROJECT_LOC = level_data['project_name']
+            ASSET_TYPE = level_data['asset_type']
+            ASSET_NAME = level_data['asset_name']
+            print_c("MSG","Level set from the key 1")            
+
+        elif input_cmd == "l2":
+            level_data = get_level_db('l2')
+            PROJECT_LOC = level_data['project_name']
+            ASSET_TYPE = level_data['asset_type']
+            ASSET_NAME = level_data['asset_name']
+            print_c("MSG","Level set from the key 2")            
+
+        elif input_cmd == "l3":
+            level_data = get_level_db('l3')
+            PROJECT_LOC = level_data['project_name']
+            ASSET_TYPE = level_data['asset_type']
+            ASSET_NAME = level_data['asset_name']
+            print_c("MSG","Level set from the key 3")            
+
+        elif input_cmd == "l4":
+            level_data = get_level_db('l4')
+            PROJECT_LOC = level_data['project_name']
+            ASSET_TYPE = level_data['asset_type']
+            ASSET_NAME = level_data['asset_name']
+            print_c("MSG","Level set from the key 4")            
+
+        else:
+            print_c("MSG","You cannot set shortcut more than key 4.")
+
+
+    elif input_cmd == "save-level" or input_cmd == "save-lvl":
+        set_level_db(PROJECT_LOC, ASSET_TYPE, ASSET_NAME)
+
+    elif input_cmd == "set-level" or input_cmd == "set-lvl":
+        level_data = get_level_db()
+        PROJECT_LOC = level_data['project_level']
+        ASSET_TYPE = level_data['asset_type']
+        ASSET_NAME = level_data['asset_name']
+
+
 
         # TODOS
         # get all todos
