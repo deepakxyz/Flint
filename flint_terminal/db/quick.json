@@ -11,9 +11,9 @@
             "asset_name": "/char/lou"
         },
         "l3": {
-            "project_name": "",
-            "asset_type": "",
-            "asset_name": ""
+            "project_name": "Solar",
+            "asset_type": "char",
+            "asset_name": "/char/funbucket"
         },
         "l4": {
             "project_name": "",

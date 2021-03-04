@@ -10,7 +10,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "naming convention.md",
+            "file": "TOdo's.md",
             "mode": "source"
           }
         }
@@ -70,7 +70,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "naming convention.md",
+                "file": "TOdo's.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -101,9 +101,9 @@
     "collapsed": true
   },
   "lastOpenFiles": [
-    "naming convention.md",
     "TOdo's.md",
     "Flint-terminal.md",
+    "naming convention.md",
     "Flint.md",
     "Untitled.md",
     "RnD_directory_structure.md",
