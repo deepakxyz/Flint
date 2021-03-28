@@ -11,14 +11,14 @@
             "asset_name": "/char/lou"
         },
         "l3": {
-            "project_name": "Solar",
-            "asset_type": "char",
-            "asset_name": "/char/funbucket"
+            "project_name": "little_lines",
+            "asset_type": "envi",
+            "asset_name": "/envi/tattoo_shop_ext"
         },
         "l4": {
-            "project_name": "",
-            "asset_type": "",
-            "asset_name": ""
+            "project_name": "Mayday",
+            "asset_type": "prop",
+            "asset_name": "/prop/celsius"
         }
     }
 }

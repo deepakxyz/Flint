@@ -132,6 +132,7 @@ while True:
             if input_data[1] in get_projects():
                 path = os.path.join(ROOT_DIR, input_data[1])
                 os.system(f'explorer.exe {path}')
+                print(f'explorer.exe {path}')
 
             else:
                 print_c('ERROR', f"Project '{input_data[1]}' does not exists.")
@@ -147,8 +148,10 @@ while True:
                 # print(ASSET_NAME)
                 os.system(f'explorer.exe {path}')
 
+                print(f'explorer.exe {path}')
             elif PROJECT_LOC == "":
                 os.system(f'explorer.exe {ROOT_DIR}')
+                print(f'explorer.exe {ROOT_DIR}')
 
             else:
                 print_c("ERROR", "Project doesn't exists.")
